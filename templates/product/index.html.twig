@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les minéraux{% endblock %}
+
+{% block content %}
+    <h1>Les minéraux</h1>
+
+    <div class="row product-container">
+        {% for product in products %}
+            <div class="col-md-4">
+                <div class="product-item text-center">
+                    <a href="{{ path('product', {'slug': product.slug}) }}">
+                        <img src="/uploads/Products/{{ product.illustration }}" alt="{{ product.name }} - image" class="img-fluid">
+                    </a>
+                    <h5> {{ product.name}} </h5>
+                    <span class="product-subtitle">{{ product.subtitle }}</span>
+                    <div class="product-price">{{ (product.price / 100)|number_format(2, ',', '.') }} €</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
